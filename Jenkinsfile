@@ -12,11 +12,9 @@ pipeline {
             steps {
                 echo 'create file'
                 sh '''
-                  touch assessment.txt
-                  date >> assessment.txt
+                  date > assessment.txt
                   '''
             }
-            
         }
         
         stage('Coleta Info') {
@@ -24,15 +22,19 @@ pipeline {
                 echo 'Informacoes da Distro utilizada'
                 sh '''
                   echo "================================" >> assessment.txt
+                  echo "========Distro Info============ " >> assessment.txt
                   echo "================================" >> assessment.txt
                   cat /etc/*-release >> assessment.txt
                   echo "================================" >> assessment.txt
+                  echo "========Kernel Info============ " >> assessment.txt
                   echo "================================" >> assessment.txt
                   uname -a >> assessment.txt
                   echo "================================" >> assessment.txt
+                  echo "======Usuários do Sistema=======" >> assessment.txt
                   echo "================================" >> assessment.txt
                   cat /etc/passwd | cut -d: -f1 >> assessment.txt
                   echo "================================" >> assessment.txt
+                  echo "========Pacotes Instalados======" >> assessment.txt
                   echo "================================" >> assessment.txt
                   dpkg -l >> assessment.txt
                   
