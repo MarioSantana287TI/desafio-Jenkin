@@ -19,33 +19,26 @@ pipeline {
             
         }
         
-        stage('Kernel Info') {
+        stage('Coleta Info') {
             steps {
                 echo 'Informacoes da Distro utilizada'
                 sh '''
+                  echo "================================" >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  cat /etc/*-release >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  echo "================================" >> assessment.txt
                   uname -a >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  cat /etc/passwd | cut -d: -f1 >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  echo "================================" >> assessment.txt
+                  dpkg -l >> assessment.txt
+                  
                   '''
             }
             
-        }
-        stage('Test') {
-            steps {
-                sh '''
-                cat /etc/passwd | cut -d: -f1 >> assessment.txt
-                '''
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying...'
-                //sh 'echo $SECRET'
-            }
-        }
-        stage('Smoke Test') {
-            steps {
-                echo 'Smoke Test...'
-                //sh 'echo $SECRET'
-            }
         }
     }
     
