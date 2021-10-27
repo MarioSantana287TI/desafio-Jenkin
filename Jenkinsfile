@@ -1,12 +1,7 @@
 pipeline {
     agent any 
     
-    environment {
-        NOME = "Mario"
-        SOBRENOME = "Santana"
-        //SECRET = credentials('TEST')
-    }
-    
+   
     stages {
         stage('Create file assessment.txt') {
             steps {
