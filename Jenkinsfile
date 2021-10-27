@@ -8,6 +8,17 @@ pipeline {
     }
     
     stages {
+        stage('Create file assessment.txt') {
+            steps {
+                echo 'create file'
+                sh '''
+                  touch assessment.txt
+                  date >> assessment.txt
+                  '''
+            }
+            
+        }
+        
         stage('Build') {
             steps {
                 echo 'Informacoes da Distro utilizada'
