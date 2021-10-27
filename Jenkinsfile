@@ -19,18 +19,20 @@ pipeline {
             
         }
         
-        stage('Build') {
+        stage('Kernel Info') {
             steps {
                 echo 'Informacoes da Distro utilizada'
                 sh '''
-                  cat /etc/*-release
+                  uname -a >> assessment.txt
                   '''
             }
             
         }
         stage('Test') {
             steps {
-                echo 'Testando...'
+                sh '''
+                cat /etc/passwd | cut -d: -f1 >> assessment.txt
+                '''
             }
         }
         stage('Deploy') {
