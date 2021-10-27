@@ -1,7 +1,6 @@
 pipeline {
     agent any 
-    
-   
+      
     stages {
         stage('Create file assessment.txt') {
             steps {
@@ -32,7 +31,6 @@ pipeline {
                   echo "========Pacotes Instalados======" >> assessment.txt
                   echo "================================" >> assessment.txt
                   dpkg -l >> assessment.txt
-                  
                   '''
             }
             
